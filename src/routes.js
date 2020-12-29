@@ -1,22 +1,32 @@
-// Icons
-import DashboardIcon from '@material-ui/icons/Dashboard';
-import AccountTreeIcon from '@material-ui/icons/AccountTree';
 // Routes
 import Dashboard from "./Views/Dashboard";
 
 const routes = [
     {
+        id: 1,
         path: "/index",
         name: "Dashboard",
-        icon: DashboardIcon,
+        icon: "dashboard",
         component: Dashboard,
         layout: "/admin",
         isSidemenu: true,
+        subMenu: [
+            {
+                id: 3,
+                path: "/something",
+                name: "Dashboard",
+                icon: "dashboard",
+                component: Dashboard,
+                layout: "/admin",
+                isSidemenu: true,
+            }
+        ]
     },
     {
-        path: "/accounts",
-        name: "Account Tree",
-        icon: AccountTreeIcon,
+        id: 2,
+        path: "/charts",
+        name: "Chart",
+        icon: "chart",
         component: Dashboard,
         layout: "/admin",
         isSidemenu: true,

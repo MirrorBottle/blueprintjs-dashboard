@@ -1,0 +1,25 @@
+@import "~normalize.css";
+@import "~@blueprintjs/core/lib/css/blueprint.css";
+@import "~@blueprintjs/icons/lib/css/blueprint-icons.css";
+
+
+#content {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.sidenav {
+    width: 320px;
+    max-width: 320px;
+    padding: 20px;
+    overflow-y: auto;
+    max-height: 100vh;
+    margin-right: 2rem;
+}
+.navbar img {
+    max-height: 100%;
+    padding: 10px;
+}
+.navbar .bp3-navbar-heading {
+    font-weight: bold;
+}

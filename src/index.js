@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
-
+import "./assets/style/global.css"
 import AdminLayout from "./Layouts/Admin";
 import AuthLayout from "./Layouts/Auth";
 ReactDOM.render(
