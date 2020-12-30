@@ -5,11 +5,13 @@ import AdminHeader from "../Components/Headers/AdminHeader.jsx";
 import Sidebar from "../Components/Sidebar/Sidebar.jsx";
 import routes from "../routes";
 import { Helmet } from "react-helmet";
+import { Button } from "@blueprintjs/core";
 export default function Admin() {
     const [activeRoute, setActiveRoute] = useState({
         index: -1,
         name: "Default"
     })
+    const [isSidemenuOpen, setIsSidemenuOpen] = useState(false)
     const location = useLocation();
 
     const getCurrentRouteText = (path, thisRoutes) => {
@@ -66,11 +68,10 @@ export default function Admin() {
             return <Redirect to="/admin/error/404" key={key} />;
         });
     };
-
+    const handleSidemenuOpen = () => setIsSidemenuOpen(!isSidemenuOpen);
     useEffect(() => {
         getCurrentRouteText(location.pathname, routes)
     }, [location.pathname]);
-
     return (
         <React.Fragment>
             <Helmet>
@@ -78,11 +79,14 @@ export default function Admin() {
                 <title>{activeRoute.name} | Blueprintjs Admin Dashboard</title>
             </Helmet>
             <AdminHeader pageName={activeRoute.name} />
-            <div id="content">
-                <Sidebar activeRouteIndex={activeRoute.index} />
-                <main>
+            <Button className="ml3 mt3" id="nav-button" onClick={handleSidemenuOpen} large icon="menu">{isSidemenuOpen ? "Close" : "Open"} Menu</Button>
+            <div className="row" id="content">
+                <div className={`col-lg-3 col-md-3 col-sm-12 col-xs-12 ${isSidemenuOpen ? "open" : "close"}`}>
+                    <Sidebar activeRouteIndex={activeRoute.index} />
+                </div>
+                <div className={`${isSidemenuOpen ? "col-lg-9 col-md-9" : "col-lg-12 col-md-12"} col-sm-12 col-xs-12 p2`}>
                     <Switch>{getRoutes(routes)}</Switch>
-                </main>
+                </div>
             </div>
         </React.Fragment>
     );

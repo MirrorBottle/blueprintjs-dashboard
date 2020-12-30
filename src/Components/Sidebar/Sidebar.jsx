@@ -7,7 +7,7 @@ import routes from "../../routes";
 function Sidebar() {
     const history = useHistory();
     return (
-        <div className="sidenav">
+        <div className="sidenav p2">
             <Menu className={Classes.ELEVATION_1}>
                 <MenuDivider title="Side Menu" />
                 {routes.map(route => (
