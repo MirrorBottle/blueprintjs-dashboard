@@ -21,11 +21,11 @@ function AdminHeader({ pageName, handleOpen }) {
             <div className="bp3-navbar-group bp3-align-right">
                 <Popover content={
                     <Menu>
-                        <MenuItem icon="edit" text="Edit Profile" />
+                        <MenuItem icon="edit" text="Profile" />
                         <MenuItem icon="lock" text="Change Password" />
                     </Menu>
                 } position={Position.BOTTOM_LEFT}>
-                    <Button style={{ marginRight: "5px" }} minimal icon="user" text="Profile" />
+                    <Button style={{ marginRight: "5px" }} minimal icon="user" text="MirrorBottle" />
                 </Popover>
                 <Button intent="danger" minimal icon="log-out" text="Logout" />
             </div>
