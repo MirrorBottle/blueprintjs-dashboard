@@ -10,14 +10,15 @@ import {
 } from "@blueprintjs/core";
 import Logo from "../../assets/images/logo.png"
 
-function AdminHeader({ pageName }) {
+function AdminHeader({ pageName, handleOpen }) {
     return (
         <Navbar className="navbar">
-            <div class="bp3-navbar-group bp3-align-left">
+            <div className="bp3-navbar-group bp3-align-left">
+                <Button large icon="menu" onClick={handleOpen}></Button>
                 <img src={Logo} alt="" />
-                <div class="bp3-navbar-heading">Blueprint | {pageName}</div>
+                <div className="bp3-navbar-heading">Blueprint | {pageName}</div>
             </div>
-            <div class="bp3-navbar-group bp3-align-right">
+            <div className="bp3-navbar-group bp3-align-right">
                 <Popover content={
                     <Menu>
                         <MenuItem icon="edit" text="Edit Profile" />
@@ -33,6 +34,7 @@ function AdminHeader({ pageName }) {
 }
 
 AdminHeader.propTypes = {
-    pageName: PropTypes.string.isRequired
+    pageName: PropTypes.string.isRequired,
+    handleOpen: PropTypes.func.isRequired
 }
 export default AdminHeader;
