@@ -165,6 +165,21 @@
 .w-100 {
     width: 100%;
 }
+.d-flex {
+    display: flex;
+}
+.justify-content-center {
+    justify-content: center;
+}
+.align-items-center {
+    align-items: center;
+}
+.flex-row {
+    flex-direction: row;
+}
+.flex-column {
+    flex-direction: column;
+}
 /* End of utility */
 #content,
 #content main {
@@ -188,4 +203,16 @@
 }
 .navbar .bp3-navbar-heading {
     font-weight: bold;
+}
+
+.footer {
+    display: flex;
+    justify-content: center;
+}
+
+.auth-layout {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
 }

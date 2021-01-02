@@ -1,5 +1,7 @@
 // Routes
 import Dashboard from "./Views/Dashboard";
+import Error404 from "./Views/Pages/Error404"
+import Login from "./Views/Pages/Login"
 
 const routes = [
     {
@@ -13,9 +15,9 @@ const routes = [
     },
     {
         id: 2,
-        path: "/charts",
-        name: "Chart",
-        icon: "chart",
+        path: "/about",
+        name: "About",
+        icon: "info-sign",
         component: Dashboard,
         layout: "/admin",
         isSidemenu: true,
@@ -32,7 +34,7 @@ const routes = [
                 path: "/login",
                 name: "Login",
                 icon: "log-in",
-                component: Dashboard,
+                component: Login,
                 layout: "/auth",
                 isSidemenu: true,
             },
@@ -48,13 +50,22 @@ const routes = [
             {
                 id: 6,
                 path: "/error/404",
-                name: "404",
+                name: "404 Not Found",
                 icon: "error",
-                component: Dashboard,
+                component: Error404,
                 layout: "/admin",
                 isSidemenu: true,
             },
         ]
+    },
+    {
+        id: 7,
+        path: "/error/404",
+        name: "404 Not Found",
+        icon: "error",
+        component: Error404,
+        layout: "/admin",
+        isSidemenu: false,
     },
 ];
 

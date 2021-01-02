@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { useLocation, Route, Switch, Redirect } from "react-router-dom"
 import { Helmet } from "react-helmet";
 // Components
-import AdminHeader from "../Components/Headers/AdminHeader.jsx";
-import Sidebar from "../Components/Sidebar/Sidebar.jsx";
+import AdminHeader from "../Components/Headers/AdminHeader";
+import Sidebar from "../Components/Sidebar/Sidebar";
+import AdminFooter from "../Components/Footers/AdminFooter";
 import routes from "../routes";
 export default function Admin() {
     const [activeRoute, setActiveRoute] = useState({
@@ -75,13 +76,14 @@ export default function Admin() {
         <React.Fragment>
             <Helmet>
                 <meta charSet="utf-8" />
-                <title>{activeRoute.name} | Blueprintjs Admin Dashboard</title>
+                <title>{activeRoute.name} | Blueprint Admin Dashboard</title>
             </Helmet>
             <AdminHeader pageName={activeRoute.name} handleOpen={handleSidemenu} />
             <Sidebar handleClose={handleSidemenu} isOpen={isSidemenuOpen} activeRoute={activeRoute} />
             <main className="pt3">
                 <Switch>{getRoutes(routes)}</Switch>
             </main>
+            <AdminFooter />
         </React.Fragment>
     );
 }
