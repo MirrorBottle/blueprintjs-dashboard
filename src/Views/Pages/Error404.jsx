@@ -15,6 +15,7 @@ export default function Error404() {
                     Please try again next time :)
                 </React.Fragment>
             }
+            className="h-60"
             action={
                 <Button
                     intent="primary"

@@ -49,7 +49,7 @@ export default class Dashboard extends React.Component {
         const { barData, lineData } = this.state;
         return (
             <React.Fragment>
-                <div className="row pl2 pr2">
+                <div className="row">
                     <div className="col-md-12 col-sm-12 col-xs-12">
                         <Card elevation={1}>
                             <H3>Welcome to Blueprint Admin Dashboard</H3>

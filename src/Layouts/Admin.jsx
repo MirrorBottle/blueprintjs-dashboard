@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { useLocation, Route, Switch, Redirect } from "react-router-dom"
+import React, { useState, useEffect, useRef } from 'react';
+import { useLocation, useHistory, Route, Switch, Redirect } from "react-router-dom"
 import { Helmet } from "react-helmet";
+import { Classes, Menu, MenuItem, Position, Drawer } from "@blueprintjs/core";
 // Components
 import AdminHeader from "../Components/Headers/AdminHeader";
 import Sidebar from "../Components/Sidebar/Sidebar";
@@ -8,27 +9,23 @@ import AdminFooter from "../Components/Footers/AdminFooter";
 import routes from "../routes";
 export default function Admin() {
     const [activeRoute, setActiveRoute] = useState({
-        index: -1,
-        name: "Default"
+        id: -1,
+        name: "Default",
     })
-    const [isSidemenuOpen, setIsSidemenuOpen] = useState(false)
     const location = useLocation();
+    const history = useHistory();
 
     const getCurrentRouteText = (path, thisRoutes) => {
         for (let i = 0; i < thisRoutes.length; i += 1) {
             const menu = thisRoutes[i];
             if (path.includes(menu.layout + menu.path) && !menu.subMenu) {
-                setActiveRoute({
-                    index: i,
-                    name: menu.name
-                })
+                const { id, name } = menu;
+                return setActiveRoute({ id, name })
             } else if (menu.subMenu) {
                 menu.subMenu !== undefined && menu.subMenu.map((sub, key) => {
                     if (path.includes(sub.layout + sub.path)) {
-                        return setActiveRoute({
-                            index: i,
-                            name: sub.name
-                        })
+                        const { id, name } = sub;
+                        return setActiveRoute({ id, name })
                     }
                     return null;
                 })
@@ -68,22 +65,25 @@ export default function Admin() {
             return <Redirect to="/admin/error/404" key={key} />;
         });
     };
-    const handleSidemenu = () => setIsSidemenuOpen(!isSidemenuOpen);
+
     useEffect(() => {
         getCurrentRouteText(location.pathname, routes)
     }, [location.pathname]);
+
     return (
         <React.Fragment>
             <Helmet>
                 <meta charSet="utf-8" />
                 <title>{activeRoute.name} | Blueprint Admin Dashboard</title>
             </Helmet>
-            <AdminHeader pageName={activeRoute.name} handleOpen={handleSidemenu} />
-            <Sidebar handleClose={handleSidemenu} isOpen={isSidemenuOpen} activeRoute={activeRoute} />
-            <main className="pt3">
-                <Switch>{getRoutes(routes)}</Switch>
-            </main>
-            <AdminFooter />
+            <AdminHeader pageName={activeRoute.name} />
+            <div className="row">
+                <Sidebar activeRoute={activeRoute} />
+                <main className="col-lg-10 col-md-10 col-sm-10 col-xs-10 pt3">
+                    <Switch>{getRoutes(routes)}</Switch>
+                    <AdminFooter />
+                </main>
+            </div>
         </React.Fragment>
     );
 }

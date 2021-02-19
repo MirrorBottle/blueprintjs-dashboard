@@ -2,10 +2,11 @@
 import Dashboard from "./Views/Dashboard";
 import Error404 from "./Views/Pages/Error404"
 import Login from "./Views/Pages/Login"
+import { uid } from "uid"
 
 const routes = [
     {
-        id: 1,
+        id: uid(),
         path: "/index",
         name: "Dashboard",
         icon: "dashboard",
@@ -14,7 +15,7 @@ const routes = [
         isSidemenu: true,
     },
     {
-        id: 2,
+        id: uid(),
         path: "/about",
         name: "About",
         icon: "info-sign",
@@ -23,14 +24,14 @@ const routes = [
         isSidemenu: true,
     },
     {
-        id: 3,
+        id: uid(),
         name: "Pages",
         icon: "book",
         layout: "/admin",
         isSidemenu: true,
         subMenu: [
             {
-                id: 4,
+                id: uid(),
                 path: "/login",
                 name: "Login",
                 icon: "log-in",
@@ -39,7 +40,7 @@ const routes = [
                 isSidemenu: true,
             },
             {
-                id: 5,
+                id: uid(),
                 path: "/register",
                 name: "Register",
                 icon: "new-person",
@@ -48,7 +49,7 @@ const routes = [
                 isSidemenu: true,
             },
             {
-                id: 6,
+                id: uid(),
                 path: "/error/404",
                 name: "404 Not Found",
                 icon: "error",
@@ -59,7 +60,7 @@ const routes = [
         ]
     },
     {
-        id: 7,
+        id: uid(),
         path: "/error/404",
         name: "404 Not Found",
         icon: "error",

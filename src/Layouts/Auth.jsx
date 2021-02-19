@@ -6,7 +6,7 @@ import AdminFooter from "../Components/Footers/AdminFooter";
 import routes from "../routes";
 export default function Auth() {
     const [activeRoute, setActiveRoute] = useState({
-        index: -1,
+        id: -1,
         name: "Default"
     })
     const location = useLocation();
@@ -15,17 +15,13 @@ export default function Auth() {
         for (let i = 0; i < thisRoutes.length; i += 1) {
             const menu = thisRoutes[i];
             if (path.includes(menu.layout + menu.path) && !menu.subMenu) {
-                setActiveRoute({
-                    index: i,
-                    name: menu.name
-                })
+                const { id, name } = menu;
+                return setActiveRoute({ id, menu })
             } else if (menu.subMenu) {
                 menu.subMenu !== undefined && menu.subMenu.map((sub, key) => {
                     if (path.includes(sub.layout + sub.path)) {
-                        return setActiveRoute({
-                            index: i,
-                            name: sub.name
-                        })
+                        const { id, name } = sub;
+                        return setActiveRoute({ id, name })
                     }
                     return null;
                 })

@@ -8,26 +8,15 @@ import {
     Popover,
     Position
 } from "@blueprintjs/core";
-import { Suggest } from "@blueprintjs/select";
 import Logo from "../../assets/images/logo.png"
 
 function AdminHeader({ pageName, handleOpen }) {
     return (
         <Navbar className="navbar">
             <div className="bp3-navbar-group bp3-align-left">
-                <Button large icon="menu" onClick={handleOpen}></Button>
                 <img src={Logo} alt="" />
                 <div className="bp3-navbar-heading">Blueprint - {pageName}</div>
-                <Suggest
-                    inputValueRenderer={(val) => val.title}
-                    // we may customize the default filmSelectProps.items by
-                    // adding newly created items to the list, so pass our own.
-                    itemRenderer={val => (<p>{val.title}</p>)}
-                    items={[
-                        { title: "The Shawshank Redemption", year: 1994 },]}
-                    noResults={<MenuItem disabled={true} text="No results." />}
-                    popoverProps={{ minimal: true }}
-                />
+
             </div>
             <div className="bp3-navbar-group bp3-align-right">
                 <Popover content={
